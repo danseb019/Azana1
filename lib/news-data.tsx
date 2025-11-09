@@ -18,7 +18,7 @@ export const newsArticles: NewsArticle[] = [
     date: "19 novembre 2025",
     excerpt:
       'Après le succès de son titre "Jackpot", l\'artiste congolais Lionel Ekongo revient sur le devant de la scène avec un nouveau single explosif intitulé "KINDOKI", dont la sortie officielle est prévue pour le 19 novembre 2025.',
-    image: "/azana-worldwide-logo.jpg",
+    image: "/lionel-ekongo-kindoki.jpeg",
     category: "Sortie",
     author: "Azana Worldwide",
     content: `
@@ -46,7 +46,7 @@ export const newsArticles: NewsArticle[] = [
     date: "9 janvier 2025",
     excerpt:
       "L'attente touche à sa fin ! Deux figures montantes de la scène urbaine congolaise, BFM Monster et The Mingongo, s'apprêtent à dévoiler leur toute nouvelle chanson une collaboration qui promet de marquer les esprits.",
-    image: "/azana-worldwide-logo.jpg",
+    image: "/bfm-monster-mingongo.jpeg",
     category: "Annonce",
     author: "Dan Seb",
     content: `
