@@ -1,3 +1,5 @@
+"use client"
+
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
@@ -6,14 +8,19 @@ import { Calendar, User, Tag, ArrowLeft, ArrowRight, Heart, Share2, MessageCircl
 import { getNewsArticleById, newsArticles } from "@/lib/news-data"
 import Link from "next/link"
 import { notFound } from "next/navigation"
+import { use, useState } from "react"
 
-export default async function NewsDetailPage({
+export default function NewsDetailPage({
   params,
 }: {
   params: Promise<{ id: string }>
 }) {
-  const { id } = await params
+  const { id } = use(params)
   const article = getNewsArticleById(id)
+
+  const [likes, setLikes] = useState(0)
+  const [isLiked, setIsLiked] = useState(false)
+  const [shares, setShares] = useState(0)
 
   if (!article) {
     notFound()
@@ -21,6 +28,43 @@ export default async function NewsDetailPage({
 
   // Get related articles (next 3 articles, excluding current one)
   const relatedArticles = newsArticles.filter((a) => a.id !== article.id).slice(0, 3)
+
+  const handleLike = () => {
+    if (isLiked) {
+      setLikes(likes - 1)
+      setIsLiked(false)
+    } else {
+      setLikes(likes + 1)
+      setIsLiked(true)
+    }
+  }
+
+  const handleShare = async () => {
+    setShares(shares + 1)
+
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: article.title,
+          text: article.excerpt,
+          url: window.location.href,
+        })
+      } catch (err) {
+        console.log("Erreur de partage:", err)
+      }
+    } else {
+      // Fallback: copy to clipboard
+      navigator.clipboard.writeText(window.location.href)
+      alert("Lien copié dans le presse-papiers!")
+    }
+  }
+
+  const handleComment = () => {
+    const commentSection = document.getElementById("comments")
+    if (commentSection) {
+      commentSection.scrollIntoView({ behavior: "smooth" })
+    }
+  }
 
   return (
     <main className="min-h-screen">
@@ -80,27 +124,43 @@ export default async function NewsDetailPage({
                 <Button
                   variant="outline"
                   size="lg"
-                  className="gap-2 hover:bg-primary hover:text-primary-foreground transition-colors bg-transparent"
+                  onClick={handleLike}
+                  className={`gap-2 transition-colors ${
+                    isLiked
+                      ? "bg-primary text-primary-foreground border-primary"
+                      : "bg-transparent hover:bg-primary hover:text-primary-foreground"
+                  }`}
                 >
-                  <Heart className="h-5 w-5" />
-                  <span>J'aime</span>
+                  <Heart className={`h-5 w-5 ${isLiked ? "fill-current" : ""}`} />
+                  <span>J'aime {likes > 0 && `(${likes})`}</span>
                 </Button>
                 <Button
                   variant="outline"
                   size="lg"
+                  onClick={handleShare}
                   className="gap-2 hover:bg-primary hover:text-primary-foreground transition-colors bg-transparent"
                 >
                   <Share2 className="h-5 w-5" />
-                  <span>Partager</span>
+                  <span>Partager {shares > 0 && `(${shares})`}</span>
                 </Button>
                 <Button
                   variant="outline"
                   size="lg"
+                  onClick={handleComment}
                   className="gap-2 hover:bg-primary hover:text-primary-foreground transition-colors bg-transparent"
                 >
                   <MessageCircle className="h-5 w-5" />
                   <span>Commenter</span>
                 </Button>
+              </div>
+            </div>
+
+            {/* Comments Section Placeholder */}
+            <div id="comments" className="pt-12 space-y-6">
+              <h3 className="text-2xl font-bold">Commentaires</h3>
+              <div className="bg-secondary/30 rounded-lg p-8 text-center text-muted-foreground">
+                <MessageCircle className="h-12 w-12 mx-auto mb-4 opacity-50" />
+                <p>Les commentaires seront bientôt disponibles.</p>
               </div>
             </div>
           </div>
