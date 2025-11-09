@@ -60,10 +60,10 @@ export function Contact() {
                     <div>
                       <p className="font-semibold mb-1">Email</p>
                       <a
-                        href="mailto:contact@azanaworldwide.com"
+                        href="mailto:azanaworldwide@gmail.com"
                         className="text-muted-foreground hover:text-primary transition-colors"
                       >
-                        contact@azanaworldwide.com
+                        azanaworldwide@gmail.com
                       </a>
                     </div>
                   </div>
@@ -72,8 +72,11 @@ export function Contact() {
                     <Phone className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
                     <div>
                       <p className="font-semibold mb-1">Téléphone</p>
-                      <a href="tel:+243" className="text-muted-foreground hover:text-primary transition-colors">
-                        +243 XXX XXX XXX
+                      <a
+                        href="tel:+243999343606"
+                        className="text-muted-foreground hover:text-primary transition-colors"
+                      >
+                        +243 999 343 606
                       </a>
                     </div>
                   </div>

@@ -6,9 +6,15 @@ import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Textarea } from "@/components/ui/textarea"
 import { Input } from "@/components/ui/input"
-import { Calendar, User, Tag, ArrowLeft, ArrowRight, Heart, Share2, MessageCircle } from "lucide-react"
+import { Calendar, User, Tag, ArrowLeft, ArrowRight, Heart, Share2, MessageCircle, Play } from "lucide-react"
 import { newsArticles, type NewsArticle } from "@/lib/news-data"
 import Link from "next/link"
+
+function getYouTubeVideoId(url: string): string | null {
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/
+  const match = url.match(regExp)
+  return match && match[2].length === 11 ? match[2] : null
+}
 
 export default function NewsArticleClient({ article }: { article: NewsArticle }) {
   const [likes, setLikes] = useState(0)
@@ -105,6 +111,37 @@ export default function NewsArticleClient({ article }: { article: NewsArticle })
                 className="w-full h-full object-cover"
               />
             </div>
+
+            {article.youtubeUrls && article.youtubeUrls.length > 0 && (
+              <div className="space-y-4">
+                <h3 className="text-xl font-semibold">Vidéos</h3>
+                <div className={`grid gap-4 ${article.youtubeUrls.length > 1 ? "md:grid-cols-2" : ""}`}>
+                  {article.youtubeUrls.map((url, index) => {
+                    const videoId = getYouTubeVideoId(url)
+                    return (
+                      <a
+                        key={index}
+                        href={url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="relative aspect-video overflow-hidden rounded-lg group cursor-pointer"
+                      >
+                        <img
+                          src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
+                          alt={`Vidéo ${index + 1}`}
+                          className="w-full h-full object-cover transition-transform group-hover:scale-105 duration-300"
+                        />
+                        <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors flex items-center justify-center">
+                          <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <Play className="h-8 w-8 text-primary-foreground fill-current ml-1" />
+                          </div>
+                        </div>
+                      </a>
+                    )
+                  })}
+                </div>
+              </div>
+            )}
 
             <div
               className="prose prose-lg prose-invert max-w-none"
