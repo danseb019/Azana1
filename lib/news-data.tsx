@@ -1,5 +1,6 @@
 export interface NewsArticle {
   id: string
+  slug: string
   title: string
   date: string
   excerpt: string
@@ -12,6 +13,7 @@ export interface NewsArticle {
 export const newsArticles: NewsArticle[] = [
   {
     id: "7",
+    slug: "lionel-ekongo-devoile-kindoki",
     title: 'Lionel Ekongo dévoile "KINDOKI"',
     date: "19 novembre 2025",
     excerpt:
@@ -39,6 +41,7 @@ export const newsArticles: NewsArticle[] = [
   },
   {
     id: "1",
+    slug: "bfm-monster-the-mingongo-sortie-explosive",
     title: "BFM Monster & The Mingongo préparent une sortie explosive !",
     date: "9 janvier 2025",
     excerpt:
@@ -58,6 +61,10 @@ export const newsArticles: NewsArticle[] = [
     `,
   },
 ]
+
+export function getNewsArticleBySlug(slug: string): NewsArticle | undefined {
+  return newsArticles.find((article) => article.slug === slug)
+}
 
 export function getNewsArticleById(id: string): NewsArticle | undefined {
   return newsArticles.find((article) => article.id === id)

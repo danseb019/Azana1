@@ -45,7 +45,7 @@ export function Hero() {
             {/* Carousel Container - 16:9 aspect ratio */}
             <div className="relative aspect-video rounded-2xl overflow-hidden bg-black shadow-2xl">
               {newsArticles.map((article, index) => (
-                <Link href={`/news/${article.id}`} key={article.id}>
+                <Link href={`/news/${article.slug}`} key={article.id}>
                   <div
                     className={`absolute inset-0 transition-opacity duration-700 ${
                       index === currentSlide ? "opacity-100" : "opacity-0"
@@ -106,7 +106,7 @@ export function Hero() {
             </div>
 
             <div className="mt-6 space-y-2">
-              <Link href={`/news/${newsArticles[currentSlide]?.id}`}>
+              <Link href={`/news/${newsArticles[currentSlide]?.slug}`}>
                 <h3 className="text-xl md:text-2xl font-bold hover:text-primary transition-colors">
                   {newsArticles[currentSlide]?.title}
                 </h3>

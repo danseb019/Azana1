@@ -5,7 +5,7 @@ import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Calendar, User, Tag, ArrowLeft, ArrowRight, Heart, Share2, MessageCircle } from "lucide-react"
-import { getNewsArticleById, newsArticles } from "@/lib/news-data"
+import { getNewsArticleBySlug, newsArticles } from "@/lib/news-data"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { use, useState } from "react"
@@ -16,7 +16,7 @@ export default function NewsDetailPage({
   params: Promise<{ id: string }>
 }) {
   const { id } = use(params)
-  const article = getNewsArticleById(id)
+  const article = getNewsArticleBySlug(id)
 
   const [likes, setLikes] = useState(0)
   const [isLiked, setIsLiked] = useState(false)
@@ -27,7 +27,7 @@ export default function NewsDetailPage({
   }
 
   // Get related articles (next 3 articles, excluding current one)
-  const relatedArticles = newsArticles.filter((a) => a.id !== article.id).slice(0, 3)
+  const relatedArticles = newsArticles.filter((a) => a.slug !== article.slug).slice(0, 3)
 
   const handleLike = () => {
     if (isLiked) {
@@ -182,7 +182,7 @@ export default function NewsDetailPage({
                     key={related.id}
                     className="overflow-hidden bg-card border-border group hover:border-primary transition-all duration-300"
                   >
-                    <Link href={`/news/${related.id}`}>
+                    <Link href={`/news/${related.slug}`}>
                       <div className="aspect-video overflow-hidden">
                         <img
                           src={related.image || "/placeholder.svg"}

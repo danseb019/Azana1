@@ -34,7 +34,7 @@ export default function NewsPage() {
                 key={article.id}
                 className="overflow-hidden bg-card border-border group hover:border-primary transition-all duration-300"
               >
-                <Link href={`/news/${article.id}`}>
+                <Link href={`/news/${article.slug}`}>
                   <div className="aspect-video overflow-hidden">
                     <img
                       src={article.image || "/placeholder.svg"}
