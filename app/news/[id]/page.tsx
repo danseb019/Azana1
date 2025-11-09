@@ -2,55 +2,10 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-import { Calendar, User, Tag, ArrowLeft, ArrowRight } from "lucide-react"
+import { Calendar, User, Tag, ArrowLeft, ArrowRight, Heart, Share2, MessageCircle } from "lucide-react"
 import { getNewsArticleById, newsArticles } from "@/lib/news-data"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import type { Metadata } from "next"
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ id: string }>
-}): Promise<Metadata> {
-  const { id } = await params
-  const article = getNewsArticleById(id)
-
-  if (!article) {
-    return {
-      title: "Article non trouvé - AZANA WORLDWIDE",
-    }
-  }
-
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://azanaworldwide.online"
-
-  return {
-    title: `${article.title} - AZANA WORLDWIDE`,
-    description: article.excerpt,
-    openGraph: {
-      title: article.title,
-      description: article.excerpt,
-      type: "article",
-      publishedTime: article.date,
-      authors: [article.author],
-      images: [
-        {
-          url: article.image.startsWith("http") ? article.image : `${baseUrl}${article.image}`,
-          width: 1200,
-          height: 630,
-          alt: article.title,
-        },
-      ],
-      siteName: "AZANA WORLDWIDE",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: article.title,
-      description: article.excerpt,
-      images: [article.image.startsWith("http") ? article.image : `${baseUrl}${article.image}`],
-    },
-  }
-}
 
 export default async function NewsDetailPage({
   params,
@@ -118,6 +73,36 @@ export default async function NewsDetailPage({
               className="prose prose-lg prose-invert max-w-none"
               dangerouslySetInnerHTML={{ __html: article.content }}
             />
+
+            {/* Social Interaction Buttons */}
+            <div className="pt-8 border-t border-border">
+              <div className="flex flex-wrap items-center gap-4">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="gap-2 hover:bg-primary hover:text-primary-foreground transition-colors bg-transparent"
+                >
+                  <Heart className="h-5 w-5" />
+                  <span>J'aime</span>
+                </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="gap-2 hover:bg-primary hover:text-primary-foreground transition-colors bg-transparent"
+                >
+                  <Share2 className="h-5 w-5" />
+                  <span>Partager</span>
+                </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="gap-2 hover:bg-primary hover:text-primary-foreground transition-colors bg-transparent"
+                >
+                  <MessageCircle className="h-5 w-5" />
+                  <span>Commenter</span>
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </article>
