@@ -120,12 +120,6 @@ export function Hero() {
         </div>
 
         <div className="max-w-4xl mx-auto text-center space-y-6 md:space-y-8">
-          <div className="space-y-3 md:space-y-4">
-            <p className="text-base sm:text-lg md:text-2xl text-muted-foreground max-w-2xl mx-auto text-balance">
-              Votre partenaire musical de confiance en République Démocratique du Congo
-            </p>
-          </div>
-
           <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center px-4">
             <Link href="/about" className="w-full sm:w-auto">
               <Button

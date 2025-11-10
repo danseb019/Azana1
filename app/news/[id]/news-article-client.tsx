@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Textarea } from "@/components/ui/textarea"
@@ -17,6 +17,10 @@ function getYouTubeVideoId(url: string): string | null {
   return match && match[2].length === 11 ? match[2] : null
 }
 
+const getStorageKey = (articleId: string, type: "likes" | "shares" | "comments" | "likedUsers") => {
+  return `azana_${type}_${articleId}`
+}
+
 export default function NewsArticleClient({ article }: { article: NewsArticle }) {
   const [likes, setLikes] = useState(0)
   const [isLiked, setIsLiked] = useState(false)
@@ -25,20 +29,66 @@ export default function NewsArticleClient({ article }: { article: NewsArticle })
   const [comments, setComments] = useState<Array<{ name: string; message: string; date: string }>>([])
   const [newComment, setNewComment] = useState({ name: "", message: "" })
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const storedLikes = localStorage.getItem(getStorageKey(article.id, "likes"))
+      const storedShares = localStorage.getItem(getStorageKey(article.id, "shares"))
+      const storedComments = localStorage.getItem(getStorageKey(article.id, "comments"))
+      const storedLikedUsers = localStorage.getItem(getStorageKey(article.id, "likedUsers"))
+
+      if (storedLikes) setLikes(Number.parseInt(storedLikes))
+      if (storedShares) setShares(Number.parseInt(storedShares))
+      if (storedComments) setComments(JSON.parse(storedComments))
+
+      // Check if current user (identified by a simple ID stored in localStorage) has liked
+      const userId = getUserId()
+      if (storedLikedUsers) {
+        const likedUsers = JSON.parse(storedLikedUsers)
+        setIsLiked(likedUsers.includes(userId))
+      }
+    }
+  }, [article.id])
+
+  const getUserId = () => {
+    let userId = localStorage.getItem("azana_user_id")
+    if (!userId) {
+      userId = `user_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+      localStorage.setItem("azana_user_id", userId)
+    }
+    return userId
+  }
+
   const relatedArticles = newsArticles.filter((a) => a.slug !== article.slug).slice(0, 3)
 
   const handleLike = () => {
+    const userId = getUserId()
+    const likedUsersKey = getStorageKey(article.id, "likedUsers")
+    const storedLikedUsers = localStorage.getItem(likedUsersKey)
+    const likedUsers = storedLikedUsers ? JSON.parse(storedLikedUsers) : []
+
     if (isLiked) {
-      setLikes(likes - 1)
+      const newLikes = likes - 1
+      setLikes(newLikes)
       setIsLiked(false)
+      localStorage.setItem(getStorageKey(article.id, "likes"), newLikes.toString())
+
+      const updatedLikedUsers = likedUsers.filter((id: string) => id !== userId)
+      localStorage.setItem(likedUsersKey, JSON.stringify(updatedLikedUsers))
     } else {
-      setLikes(likes + 1)
+      const newLikes = likes + 1
+      setLikes(newLikes)
       setIsLiked(true)
+      localStorage.setItem(getStorageKey(article.id, "likes"), newLikes.toString())
+
+      likedUsers.push(userId)
+      localStorage.setItem(likedUsersKey, JSON.stringify(likedUsers))
     }
   }
 
   const handleShare = async () => {
-    setShares(shares + 1)
+    const newShares = shares + 1
+    setShares(newShares)
+    localStorage.setItem(getStorageKey(article.id, "shares"), newShares.toString())
 
     if (navigator.share) {
       try {
@@ -85,7 +135,9 @@ export default function NewsArticleClient({ article }: { article: NewsArticle })
           year: "numeric",
         }),
       }
-      setComments([comment, ...comments])
+      const updatedComments = [comment, ...comments]
+      setComments(updatedComments)
+      localStorage.setItem(getStorageKey(article.id, "comments"), JSON.stringify(updatedComments))
       setNewComment({ name: "", message: "" })
     }
   }
