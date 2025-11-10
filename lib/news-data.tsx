@@ -14,6 +14,33 @@ export interface NewsArticle {
 
 export const newsArticles: NewsArticle[] = [
   {
+    id: "8",
+    slug: "benah-annonce-bina-changa",
+    title: 'Benah annonce sa nouvelle chanson "Bina Changa", une ode à la danse et à la bonne humeur',
+    date: "11 janvier 2025",
+    excerpt:
+      "L'artiste congolais Benah s'apprête à marquer un nouveau tournant dans sa carrière musicale avec la sortie imminente de sa chanson \"Bina Changa\", un titre qui s'annonce comme un véritable hymne à la fête, à la joie et à la culture africaine.",
+    image: "/benah-bina-changa.jpg",
+    category: "Annonce",
+    author: "Azana Worldwide",
+    youtubeUrls: ["https://audiomack.com/benah-68e51591380e6/song/hadisi?share-user-id=160097046"],
+    videoTitles: ["Benah - Hadisi (Audiomack)"],
+    content: `
+      <p>L'artiste congolais Benah s'apprête à marquer un nouveau tournant dans sa carrière musicale avec la sortie imminente de sa chanson "Bina Changa", un titre qui s'annonce comme un véritable hymne à la fête, à la joie et à la culture africaine.</p>
+      
+      <p>Après plusieurs projets remarqués, Benah revient avec une énergie renouvelée et un son qui mêle rythmes afro, mélodies entraînantes et une touche moderne, fidèle à sa signature artistique. "Bina Changa", qui signifie littéralement <em>danse avec style</em> ou <em>danse avec grâce</em>, est une invitation à célébrer la vie à travers la musique et le mouvement.</p>
+      
+      <blockquote>« Cette chanson, c'est un appel à la positivité, à oublier les soucis et à se reconnecter à ce qu'on a de plus beau : notre énergie et notre culture », confie Benah.</blockquote>
+      
+      <h3>Un son vibrant taillé pour la danse</h3>
+      <p>Produit avec soin en studio, le morceau promet des sonorités vibrantes et un refrain accrocheur taillé pour les pistes de danse et les playlists afro les plus populaires. Le clip officiel, actuellement en préparation, mettra en valeur la créativité et le style unique de Benah, tout en rendant hommage aux danses urbaines africaines.</p>
+      
+      <p>Avec "Bina Changa", Benah confirme son ambition de s'imposer comme l'une des figures montantes de la scène afro contemporaine, tout en restant fidèle à ses racines.</p>
+      
+      <p><strong>La date officielle de sortie sera bientôt annoncée. En attendant, les fans peuvent suivre Benah sur ses réseaux sociaux pour ne rien manquer de cette sortie très attendue.</strong></p>
+    `,
+  },
+  {
     id: "7",
     slug: "lionel-ekongo-devoile-kindoki",
     title: 'Lionel Ekongo dévoile "KINDOKI"',
