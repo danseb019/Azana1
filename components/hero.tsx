@@ -121,21 +121,6 @@ export function Hero() {
 
         <div className="max-w-4xl mx-auto text-center space-y-6 md:space-y-8">
           <div className="space-y-3 md:space-y-4">
-            <div className="flex justify-center mb-4">
-              <div className="relative h-32 sm:h-40 md:h-48 w-full max-w-2xl">
-                <Image
-                  src="/azana-logo-transparent.png"
-                  alt="AZANA WORLDWIDE"
-                  fill
-                  className="object-contain"
-                  style={{
-                    filter:
-                      "brightness(0) saturate(100%) invert(37%) sepia(97%) saturate(2742%) hue-rotate(356deg) brightness(98%) contrast(106%)",
-                  }}
-                  priority
-                />
-              </div>
-            </div>
             <p className="text-base sm:text-lg md:text-2xl text-muted-foreground max-w-2xl mx-auto text-balance">
               Votre partenaire musical de confiance en République Démocratique du Congo
             </p>

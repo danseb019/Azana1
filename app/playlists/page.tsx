@@ -15,28 +15,28 @@ const playlists = [
     name: "Kivu Best Music",
     platform: "Audiomack",
     url: "https://audiomack.com/azanaworldwide/playlist/kivu-best-music?share-user-id=160097046",
-    image: "/audiomack-kivu-best-music.jpeg",
+    image: "/kivu-best-music-audiomack.jpeg",
   },
   {
     id: 2,
     name: "Congolese Sounds",
     platform: "Audiomack",
     url: "https://audiomack.com/azanaworldwide/playlist/hit-after-hit?share-user-id=160097046",
-    image: "/audiomack-congolese-sounds.jpeg",
+    image: "/congolese-sounds.jpeg",
   },
   {
     id: 3,
     name: "Kivu Best Music",
     platform: "Spotify",
     url: "https://open.spotify.com/playlist/2iyPGcFaSkzv87Twj944ft?si=cqxTshEoQjSEl0cZHwK9zw&pi=TVUt1AgqSOeEH",
-    image: "/spotify-kivu-best-music.jpeg",
+    image: "/kivu-best-music-spotify.jpeg",
   },
   {
     id: 4,
     name: "Afro Rumba",
     platform: "Spotify",
     url: "https://open.spotify.com/playlist/1cKz1jy2UrIQsgea2NLi3T?si=uv8znIZTQgSC1OynG6k6zQ&pi=mCaAotLBS0eUc",
-    image: "/spotify-afro-rumba.jpeg",
+    image: "/afro-rumba.jpeg",
   },
 ]
 
