@@ -72,6 +72,14 @@ export function Header() {
               Actualités
             </Link>
             <Link
+              href="/playlists"
+              className={`text-sm font-medium hover:text-primary transition-colors ${
+                pathname === "/playlists" ? "text-primary" : "text-foreground"
+              }`}
+            >
+              Playlists
+            </Link>
+            <Link
               href="/contact"
               className={`text-sm font-medium hover:text-primary transition-colors ${
                 pathname === "/contact" ? "text-primary" : "text-foreground"
@@ -150,6 +158,15 @@ export function Header() {
                 }`}
               >
                 Actualités
+              </Link>
+              <Link
+                href="/playlists"
+                onClick={() => setMobileMenuOpen(false)}
+                className={`text-base font-medium hover:text-primary transition-colors ${
+                  pathname === "/playlists" ? "text-primary" : "text-foreground"
+                }`}
+              >
+                Playlists
               </Link>
               <Link
                 href="/contact"

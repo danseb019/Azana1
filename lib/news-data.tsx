@@ -9,6 +9,7 @@ export interface NewsArticle {
   category: string
   author: string
   youtubeUrls?: string[]
+  videoTitles?: string[]
 }
 
 export const newsArticles: NewsArticle[] = [
@@ -16,13 +17,14 @@ export const newsArticles: NewsArticle[] = [
     id: "7",
     slug: "lionel-ekongo-devoile-kindoki",
     title: 'Lionel Ekongo dévoile "KINDOKI"',
-    date: "19 novembre 2025",
+    date: "9 novembre 2025",
     excerpt:
       'Après le succès de son titre "Jackpot", l\'artiste congolais Lionel Ekongo revient sur le devant de la scène avec un nouveau single explosif intitulé "KINDOKI", dont la sortie officielle est prévue pour le 19 novembre 2025.',
     image: "/lionel-ekongo-kindoki.jpeg",
     category: "Sortie",
     author: "Azana Worldwide",
     youtubeUrls: ["https://youtu.be/n_9OFtwz5IM?si=6ZlLKWqm5LYkvx2K"],
+    videoTitles: ["Lionel Ekongo - KINDOKI (Official Video)"],
     content: `
       <p>Après le succès de son titre "Jackpot", l'artiste congolais Lionel Ekongo revient sur le devant de la scène avec un nouveau single explosif intitulé "KINDOKI", dont la sortie officielle est prévue pour le 19 novembre 2025.</p>
       
@@ -55,6 +57,7 @@ export const newsArticles: NewsArticle[] = [
       "https://youtu.be/jFR_W2ODIOM?si=xTOk4dm7v-BYBHm7",
       "https://youtu.be/GiTo8PgvbcU?si=IoDjdcu34U9ambLi",
     ],
+    videoTitles: ["BFM Monster & The Mingongo - Single 1", "BFM Monster & The Mingongo - Single 2"],
     content: `
       <p>L'attente touche à sa fin ! Deux figures montantes de la scène urbaine congolaise, BFM Monster et The Mingongo, s'apprêtent à dévoiler leur toute nouvelle chanson une collaboration qui promet de marquer les esprits.</p>
       
@@ -63,6 +66,7 @@ export const newsArticles: NewsArticle[] = [
       <p>Ce nouveau single, dont la sortie est prévue très bientôt, mettra en avant des sonorités afro urbaines modernes, portées par une production soignée et une ambiance aussi dansante qu'engagée. Les fans peuvent s'attendre à un clip haut en couleur, fidèle à l'énergie débordante des deux artistes.</p>
       
       <h3>Restez connectés !</h3>
+      
       <p>La sortie officielle sera annoncée dans les jours à venir sur toutes les plateformes digitales et les réseaux sociaux des artistes. Une seule chose est sûre : BFM Monster x The Mingongo, c'est une combinaison à ne surtout pas manquer !</p>
     `,
   },

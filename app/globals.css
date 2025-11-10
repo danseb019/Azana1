@@ -77,7 +77,8 @@
 }
 
 @theme inline {
-  --font-sans: "Geist", "Geist Fallback";
+  /* Updated font variables to use Poppins */
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Geist Mono", "Geist Mono Fallback";
   --color-background: var(--background);
   --color-foreground: var(--foreground);
