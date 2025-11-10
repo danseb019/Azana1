@@ -16,15 +16,13 @@ export const newsArticles: NewsArticle[] = [
   {
     id: "8",
     slug: "benah-annonce-bina-changa",
-    title: 'Benah annonce sa nouvelle chanson "Bina Changa", une ode à la danse et à la bonne humeur',
+    title: 'Benah annonce "Bina Changa" - Une ode à la danse',
     date: "11 janvier 2025",
     excerpt:
       "L'artiste congolais Benah s'apprête à marquer un nouveau tournant dans sa carrière musicale avec la sortie imminente de sa chanson \"Bina Changa\", un titre qui s'annonce comme un véritable hymne à la fête, à la joie et à la culture africaine.",
-    image: "/benah-bina-changa.jpg",
+    image: "/benah-bina-changa-cover.jpeg",
     category: "Annonce",
     author: "Azana Worldwide",
-    youtubeUrls: ["https://audiomack.com/benah-68e51591380e6/song/hadisi?share-user-id=160097046"],
-    videoTitles: ["Benah - Hadisi (Audiomack)"],
     content: `
       <p>L'artiste congolais Benah s'apprête à marquer un nouveau tournant dans sa carrière musicale avec la sortie imminente de sa chanson "Bina Changa", un titre qui s'annonce comme un véritable hymne à la fête, à la joie et à la culture africaine.</p>
       
