@@ -7,7 +7,7 @@ import { Card } from "@/components/ui/card"
 import { Textarea } from "@/components/ui/textarea"
 import { Input } from "@/components/ui/input"
 import { Separator } from "@/components/ui/separator"
-import { Calendar, User, Tag, ArrowLeft, ArrowRight, Heart, Share2, MessageCircle, Play, Send } from "lucide-react"
+import { Calendar, User, Tag, ArrowLeft, ArrowRight, MessageCircle, Play, Send } from "lucide-react"
 import { newsArticles, type NewsArticle } from "@/lib/news-data"
 import Link from "next/link"
 
@@ -17,101 +17,22 @@ function getYouTubeVideoId(url: string): string | null {
   return match && match[2].length === 11 ? match[2] : null
 }
 
-const getStorageKey = (articleId: string, type: "likes" | "shares" | "comments" | "likedUsers") => {
-  return `azana_${type}_${articleId}`
+const getStorageKey = (articleId: string) => {
+  return `azana_comments_${articleId}`
 }
 
 export default function NewsArticleClient({ article }: { article: NewsArticle }) {
-  const [likes, setLikes] = useState(0)
-  const [isLiked, setIsLiked] = useState(false)
-  const [shares, setShares] = useState(0)
-  const [shareSuccess, setShareSuccess] = useState(false)
   const [comments, setComments] = useState<Array<{ name: string; message: string; date: string }>>([])
   const [newComment, setNewComment] = useState({ name: "", message: "" })
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const storedLikes = localStorage.getItem(getStorageKey(article.id, "likes"))
-      const storedShares = localStorage.getItem(getStorageKey(article.id, "shares"))
-      const storedComments = localStorage.getItem(getStorageKey(article.id, "comments"))
-      const storedLikedUsers = localStorage.getItem(getStorageKey(article.id, "likedUsers"))
-
-      if (storedLikes) setLikes(Number.parseInt(storedLikes))
-      if (storedShares) setShares(Number.parseInt(storedShares))
+      const storedComments = localStorage.getItem(getStorageKey(article.id))
       if (storedComments) setComments(JSON.parse(storedComments))
-
-      // Check if current user (identified by a simple ID stored in localStorage) has liked
-      const userId = getUserId()
-      if (storedLikedUsers) {
-        const likedUsers = JSON.parse(storedLikedUsers)
-        setIsLiked(likedUsers.includes(userId))
-      }
     }
   }, [article.id])
 
-  const getUserId = () => {
-    let userId = localStorage.getItem("azana_user_id")
-    if (!userId) {
-      userId = `user_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
-      localStorage.setItem("azana_user_id", userId)
-    }
-    return userId
-  }
-
   const relatedArticles = newsArticles.filter((a) => a.slug !== article.slug).slice(0, 3)
-
-  const handleLike = () => {
-    const userId = getUserId()
-    const likedUsersKey = getStorageKey(article.id, "likedUsers")
-    const storedLikedUsers = localStorage.getItem(likedUsersKey)
-    const likedUsers = storedLikedUsers ? JSON.parse(storedLikedUsers) : []
-
-    if (isLiked) {
-      const newLikes = likes - 1
-      setLikes(newLikes)
-      setIsLiked(false)
-      localStorage.setItem(getStorageKey(article.id, "likes"), newLikes.toString())
-
-      const updatedLikedUsers = likedUsers.filter((id: string) => id !== userId)
-      localStorage.setItem(likedUsersKey, JSON.stringify(updatedLikedUsers))
-    } else {
-      const newLikes = likes + 1
-      setLikes(newLikes)
-      setIsLiked(true)
-      localStorage.setItem(getStorageKey(article.id, "likes"), newLikes.toString())
-
-      likedUsers.push(userId)
-      localStorage.setItem(likedUsersKey, JSON.stringify(likedUsers))
-    }
-  }
-
-  const handleShare = async () => {
-    const newShares = shares + 1
-    setShares(newShares)
-    localStorage.setItem(getStorageKey(article.id, "shares"), newShares.toString())
-
-    if (navigator.share) {
-      try {
-        await navigator.share({
-          title: article.title,
-          text: article.excerpt,
-          url: window.location.href,
-        })
-        setShareSuccess(true)
-        setTimeout(() => setShareSuccess(false), 2000)
-      } catch (err) {
-        if ((err as Error).name !== "AbortError") {
-          navigator.clipboard.writeText(window.location.href)
-          setShareSuccess(true)
-          setTimeout(() => setShareSuccess(false), 2000)
-        }
-      }
-    } else {
-      navigator.clipboard.writeText(window.location.href)
-      setShareSuccess(true)
-      setTimeout(() => setShareSuccess(false), 2000)
-    }
-  }
 
   const handleComment = () => {
     const commentSection = document.getElementById("comments")
@@ -137,7 +58,7 @@ export default function NewsArticleClient({ article }: { article: NewsArticle })
       }
       const updatedComments = [comment, ...comments]
       setComments(updatedComments)
-      localStorage.setItem(getStorageKey(article.id, "comments"), JSON.stringify(updatedComments))
+      localStorage.setItem(getStorageKey(article.id), JSON.stringify(updatedComments))
       setNewComment({ name: "", message: "" })
     }
   }
@@ -224,58 +145,24 @@ export default function NewsArticleClient({ article }: { article: NewsArticle })
               <Card className="p-8 bg-secondary/20 border-border">
                 <div className="space-y-6">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-xl font-semibold">Interagir avec l'article</h3>
+                    <h3 className="text-xl font-semibold">Laissez un commentaire</h3>
                     <Separator className="flex-1 ml-6" />
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <Button
-                      variant={isLiked ? "default" : "outline"}
-                      size="lg"
-                      onClick={handleLike}
-                      className="gap-3 h-auto py-4 transition-all hover:scale-105 active:scale-95"
-                    >
-                      <Heart className={`h-5 w-5 ${isLiked ? "fill-current animate-pulse" : ""}`} />
-                      <div className="flex flex-col items-start">
-                        <span className="font-semibold">J'aime</span>
-                        <span className="text-xs opacity-80">
-                          {likes} {likes > 1 ? "personnes" : "personne"}
-                        </span>
-                      </div>
-                    </Button>
-
-                    <Button
-                      variant="outline"
-                      size="lg"
-                      onClick={handleShare}
-                      className={`gap-3 h-auto py-4 transition-all hover:scale-105 active:scale-95 ${
-                        shareSuccess ? "bg-green-500/20 border-green-500" : ""
-                      }`}
-                    >
-                      <Share2 className="h-5 w-5" />
-                      <div className="flex flex-col items-start">
-                        <span className="font-semibold">{shareSuccess ? "Copié!" : "Partager"}</span>
-                        <span className="text-xs opacity-80">
-                          {shares} {shares > 1 ? "partages" : "partage"}
-                        </span>
-                      </div>
-                    </Button>
-
-                    <Button
-                      variant="outline"
-                      size="lg"
-                      onClick={handleComment}
-                      className="gap-3 h-auto py-4 transition-all hover:scale-105 active:scale-95 bg-transparent"
-                    >
-                      <MessageCircle className="h-5 w-5" />
-                      <div className="flex flex-col items-start">
-                        <span className="font-semibold">Commenter</span>
-                        <span className="text-xs opacity-80">
-                          {comments.length} {comments.length > 1 ? "commentaires" : "commentaire"}
-                        </span>
-                      </div>
-                    </Button>
-                  </div>
+                  <Button
+                    variant="default"
+                    size="lg"
+                    onClick={handleComment}
+                    className="gap-3 h-auto py-4 w-full transition-all hover:scale-105 active:scale-95"
+                  >
+                    <MessageCircle className="h-5 w-5" />
+                    <div className="flex flex-col items-start">
+                      <span className="font-semibold">Commenter</span>
+                      <span className="text-xs opacity-80">
+                        {comments.length} {comments.length > 1 ? "commentaires" : "commentaire"}
+                      </span>
+                    </div>
+                  </Button>
                 </div>
               </Card>
             </div>
