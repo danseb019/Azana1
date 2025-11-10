@@ -23,17 +23,7 @@ export function Header() {
         <nav className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center gap-2 z-50 relative h-10">
             <div className="relative h-10 w-40">
-              <Image
-                src="/azana-logo-transparent.png"
-                alt="AZANA WORLDWIDE"
-                fill
-                className="object-contain"
-                style={{
-                  filter:
-                    "brightness(0) saturate(100%) invert(37%) sepia(97%) saturate(2742%) hue-rotate(356deg) brightness(98%) contrast(106%)",
-                }}
-                priority
-              />
+              <Image src="/azana-logo.png" alt="AZANA WORLDWIDE" fill className="object-contain" priority />
             </div>
           </Link>
 
