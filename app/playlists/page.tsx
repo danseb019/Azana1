@@ -15,32 +15,28 @@ const playlists = [
     name: "Kivu Best Music",
     platform: "Audiomack",
     url: "https://audiomack.com/azanaworldwide/playlist/kivu-best-music?share-user-id=160097046",
-    image:
-      "https://assets.audiomack.com/azanaworldwide/c9ea8c95bf3d59e19c1b6dd9d09b7cd0e13e3b44ed61fa1e2e0b1e4e1c9f2b8a.jpeg?width=640&height=640&max=true",
+    image: "/kivu-best-music-african-playlist-cover.jpg",
   },
   {
     id: 2,
     name: "Hit After Hit",
     platform: "Audiomack",
     url: "https://audiomack.com/azanaworldwide/playlist/hit-after-hit?share-user-id=160097046",
-    image:
-      "https://assets.audiomack.com/azanaworldwide/bb2e5c8dcfaf0bb41e45cf67b96de86cfb14a24f5e22b0dd0b14f73dbfbb8cb5.jpeg?width=640&height=640&max=true",
+    image: "/hit-after-hit-music-playlist-cover.jpg",
   },
   {
     id: 3,
-    name: "Playlist 1",
+    name: "Playlist Spotify 1",
     platform: "Spotify",
     url: "https://open.spotify.com/playlist/2iyPGcFaSkzv87Twj944ft?si=cqxTshEoQjSEl0cZHwK9zw&pi=TVUt1AgqSOeEH",
-    image:
-      "https://mosaic.scdn.co/640/ab67616d00001e02336a5329f90a5f1db8e85e1bab67616d00001e023edd98bf5c1b4b3e8e89f4acab67616d00001e025f1b8c8c5e1d3b7e3f5e5f1aab67616d00001e029e5c8f5c1d3b7e3f5e5f1abc",
+    image: "/spotify-music-playlist-mosaic-cover.jpg",
   },
   {
     id: 4,
-    name: "Playlist 2",
+    name: "Playlist Spotify 2",
     platform: "Spotify",
     url: "https://open.spotify.com/playlist/1cKz1jy2UrIQsgea2NLi3T?si=uv8znIZTQgSC1OynG6k6zQ&pi=mCaAotLBS0eUc",
-    image:
-      "https://mosaic.scdn.co/640/ab67616d00001e021a2f3e5b4c6d7e8f9a0b1c2dab67616d00001e022b3f4e5c6d7e8f9a0b1c2d3eab67616d00001e023c4f5e6d7e8f9a0b1c2d3e4fab67616d00001e024d5f6e7d8e9f0a1b2c3d4e5f",
+    image: "/spotify-african-music-playlist-cover.jpg",
   },
 ]
 
