@@ -17,17 +17,12 @@ export const newsArticles: NewsArticle[] = [
     id: "9",
     slug: "mira-suka-challenge-fido-drc",
     title: "Mira Suka lance un nouveau challenge en collaboration avec Fido DRC !",
-    date: "13 novembre 2025",
+    date: "12 novembre 2025",
     excerpt:
       "L'artiste congolaise Mira Suka revient en force avec un tout nouveau challenge musical qui promet de faire vibrer les réseaux sociaux ! En collaboration avec Fido DRC, cette initiative marque une nouvelle ère dans la créativité et la participation des jeunes talents congolais.",
     image: "/mira-suka-fido-challenge.jpeg",
     category: "Annonce",
     author: "Azana Worldwide",
-    youtubeUrls: [
-      "https://youtu.be/LoBMxta4rUI?si=1rcVuMapndrXyVSQ",
-      "https://youtu.be/4ZsTtU5zdPc?si=BdhRE6ZzTKMUVVD_",
-    ],
-    videoTitles: ["Mira Suka x Fido DRC - Challenge Officiel", "Mira Suka x Fido DRC - Making Of"],
     content: `
       <p>L'artiste congolaise Mira Suka revient en force avec un tout nouveau challenge musical qui promet de faire vibrer les réseaux sociaux ! En collaboration avec Fido DRC, cette initiative sera officiellement lancée le 13 novembre 2025, marquant une nouvelle ère dans la créativité et la participation des jeunes talents congolais.</p>
       
