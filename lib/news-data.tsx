@@ -20,7 +20,7 @@ export const newsArticles: NewsArticle[] = [
     date: "12 novembre 2025",
     excerpt:
       "L'artiste congolaise Mira Suka revient en force avec un tout nouveau challenge musical qui promet de faire vibrer les réseaux sociaux ! En collaboration avec Fido DRC, cette initiative marque une nouvelle ère dans la créativité et la participation des jeunes talents congolais.",
-    image: "/mira-suka-fido-challenge.jpeg",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/f83ececc-aea2-4d93-beed-c24d7bb97762.jpeg",
     category: "Annonce",
     author: "Azana Worldwide",
     content: `

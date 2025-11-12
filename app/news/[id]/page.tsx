@@ -21,7 +21,7 @@ export async function generateMetadata({
   }
 
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://azanaworldwide.online"
-  const imageUrl = `${siteUrl}${article.image}`
+  const imageUrl = article.image.startsWith("http") ? article.image : `${siteUrl}${article.image}`
 
   return {
     title: `${article.title} | Azana Worldwide`,
