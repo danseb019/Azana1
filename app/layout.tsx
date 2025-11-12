@@ -16,6 +16,27 @@ export const metadata: Metadata = {
   description:
     "AZANA WORLDWIDE est une maison de disques musicale basée à l'est de la République Démocratique du Congo. Distribution et promotion musicale sur toutes les plateformes.",
   generator: "v0.app",
+  openGraph: {
+    title: "AZANA WORLDWIDE - Maison de Disques | RDC",
+    description:
+      "AZANA WORLDWIDE est une maison de disques musicale basée à l'est de la République Démocratique du Congo. Distribution et promotion musicale sur toutes les plateformes.",
+    images: [
+      {
+        url: "/azana-logo.png",
+        width: 1200,
+        height: 630,
+        alt: "AZANA WORLDWIDE",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AZANA WORLDWIDE - Maison de Disques | RDC",
+    description:
+      "AZANA WORLDWIDE est une maison de disques musicale basée à l'est de la République Démocratique du Congo. Distribution et promotion musicale sur toutes les plateformes.",
+    images: ["/azana-logo.png"],
+  },
   icons: {
     icon: [
       {
