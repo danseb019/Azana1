@@ -14,6 +14,41 @@ export interface NewsArticle {
 
 export const newsArticles: NewsArticle[] = [
   {
+    id: "9",
+    slug: "mira-suka-challenge-fido-drc",
+    title: "Mira Suka lance un nouveau challenge en collaboration avec Fido DRC !",
+    date: "13 novembre 2025",
+    excerpt:
+      "L'artiste congolaise Mira Suka revient en force avec un tout nouveau challenge musical qui promet de faire vibrer les réseaux sociaux ! En collaboration avec Fido DRC, cette initiative marque une nouvelle ère dans la créativité et la participation des jeunes talents congolais.",
+    image: "/mira-suka-fido-challenge.jpeg",
+    category: "Annonce",
+    author: "Azana Worldwide",
+    youtubeUrls: [
+      "https://youtu.be/LoBMxta4rUI?si=1rcVuMapndrXyVSQ",
+      "https://youtu.be/4ZsTtU5zdPc?si=BdhRE6ZzTKMUVVD_",
+    ],
+    videoTitles: ["Mira Suka x Fido DRC Challenge - Vidéo 1", "Mira Suka x Fido DRC Challenge - Vidéo 2"],
+    content: `
+      <p>L'artiste congolaise Mira Suka revient en force avec un tout nouveau challenge musical qui promet de faire vibrer les réseaux sociaux ! En collaboration avec Fido DRC, cette initiative sera officiellement lancée le 13 novembre 2025, marquant une nouvelle ère dans la créativité et la participation des jeunes talents congolais.</p>
+      
+      <p>Après avoir conquis le public avec ses précédents titres et performances remarquées, Mira Suka continue d'imposer son empreinte dans l'univers musical urbain. Ce nouveau challenge, soutenu par la marque Fido DRC, vise à encourager la communauté à s'exprimer à travers la danse, le chant et les contenus créatifs sur les plateformes comme TikTok, Instagram et YouTube.</p>
+      
+      <h3>Un mouvement pour rassembler la jeunesse</h3>
+      
+      <p>Selon l'équipe de Mira Suka, ce projet est bien plus qu'un simple concours :</p>
+      
+      <blockquote>« C'est un mouvement pour rassembler la jeunesse autour de la musique congolaise moderne, tout en offrant une plateforme d'expression et de visibilité », confie son manager.</blockquote>
+      
+      <p>Les participants sont invités à reprendre le son officiel du challenge, à créer leur propre version ou performance, et à publier leur vidéo avec le hashtag <strong>#MiraSukaChallenge</strong> pour tenter de remporter des récompenses exclusives offertes par Fido DRC.</p>
+      
+      <h3>Une expérience artistique unique</h3>
+      
+      <p>Avec son énergie contagieuse et son style unique, Mira Suka promet une expérience artistique pleine de rythme, de fun et de surprises. Le public est déjà impatient de découvrir ce que cache cette nouvelle collaboration, qui s'annonce comme l'un des défis les plus attendus de la scène congolaise en cette fin d'année.</p>
+      
+      <p><strong>Rejoignez le mouvement #MiraSukaChallenge et montrez votre talent !</strong></p>
+    `,
+  },
+  {
     id: "8",
     slug: "benah-annonce-bina-changa",
     title: 'Benah annonce "Bina Changa" - Une ode à la danse',
@@ -60,8 +95,8 @@ export const newsArticles: NewsArticle[] = [
       
       <blockquote>"KINDOKI parle de ce qu'on ne comprend pas toujours, de ce qu'on juge sans connaître… mais aussi de la force intérieure qu'on porte en soi," confie Lionel Ekongo.</blockquote>
       
-      <h3>Un morceau phare de l'EP "Sacrifice"</h3>
-      <p>Le titre s'annonce déjà comme l'un des morceaux phares de son prochain EP "Sacrifice", attendu dans les mois à venir. Avec une production soignée et un message profond, KINDOKI marque une étape décisive dans la carrière de l'artiste, prêt à représenter fièrement l'énergie authentique de la musique congolaise sur la scène internationale.</p>
+      <h3>Un morceau phare de l\'EP "Sacrifice"</h3>
+      <p>Le titre s\'annonce déjà comme l\'un des morceaux phares de son prochain EP "Sacrifice", attendu dans les mois à venir. Avec une production soignée et un message profond, KINDOKI marque une étape décisive dans la carrière de l\'artiste, prêt à représenter fièrement l\'énergie authentique de la musique congolaise sur la scène internationale.</p>
       
       <p>Le rendez-vous est donc pris : le 19 novembre 2025, la rumba aura un nouveau visage — celui de Lionel Ekongo, et un nouveau nom à retenir : KINDOKI.</p>
       
