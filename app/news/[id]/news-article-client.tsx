@@ -122,7 +122,7 @@ export default function NewsArticleClient({ article }: { article: NewsArticle })
                         >
                           <img
                             src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
-                            alt={`Vidéo ${index + 1}`}
+                            alt={article.videoTitles?.[index] || `Vidéo ${index + 1}`}
                             className="w-full h-full object-cover transition-transform group-hover:scale-105 duration-300"
                           />
                           <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors flex items-center justify-center">
@@ -132,7 +132,7 @@ export default function NewsArticleClient({ article }: { article: NewsArticle })
                           </div>
                         </a>
                         {article.videoTitles && article.videoTitles[index] && (
-                          <p className="text-sm text-muted-foreground text-center">{article.videoTitles[index]}</p>
+                          <p className="text-sm font-semibold text-foreground">{article.videoTitles[index]}</p>
                         )}
                       </div>
                     )

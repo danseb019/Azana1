@@ -27,7 +27,7 @@ export const newsArticles: NewsArticle[] = [
       "https://youtu.be/LoBMxta4rUI?si=1rcVuMapndrXyVSQ",
       "https://youtu.be/4ZsTtU5zdPc?si=BdhRE6ZzTKMUVVD_",
     ],
-    videoTitles: ["Mira Suka x Fido DRC Challenge - Vidéo 1", "Mira Suka x Fido DRC Challenge - Vidéo 2"],
+    videoTitles: ["Mira Suka x Fido DRC - Challenge Officiel", "Mira Suka x Fido DRC - Making Of"],
     content: `
       <p>L'artiste congolaise Mira Suka revient en force avec un tout nouveau challenge musical qui promet de faire vibrer les réseaux sociaux ! En collaboration avec Fido DRC, cette initiative sera officiellement lancée le 13 novembre 2025, marquant une nouvelle ère dans la créativité et la participation des jeunes talents congolais.</p>
       
@@ -84,7 +84,7 @@ export const newsArticles: NewsArticle[] = [
     category: "Sortie",
     author: "Azana Worldwide",
     youtubeUrls: ["https://youtu.be/n_9OFtwz5IM?si=6ZlLKWqm5LYkvx2K"],
-    videoTitles: ["Lionel Ekongo - KINDOKI (Official Video)"],
+    videoTitles: ["Lionel Ekongo - KINDOKI (Clip Officiel)"],
     content: `
       <p>Après le succès de son titre "Jackpot", l'artiste congolais Lionel Ekongo revient sur le devant de la scène avec un nouveau single explosif intitulé "KINDOKI", dont la sortie officielle est prévue pour le 19 novembre 2025.</p>
       
@@ -117,7 +117,10 @@ export const newsArticles: NewsArticle[] = [
       "https://youtu.be/jFR_W2ODIOM?si=xTOk4dm7v-BYBHm7",
       "https://youtu.be/GiTo8PgvbcU?si=IoDjdcu34U9ambLi",
     ],
-    videoTitles: ["BFM Monster & The Mingongo - Single 1", "BFM Monster & The Mingongo - Single 2"],
+    videoTitles: [
+      "BFM Monster & The Mingongo - Nouveau Single (Teaser)",
+      "BFM Monster & The Mingongo - Behind The Scenes",
+    ],
     content: `
       <p>L'attente touche à sa fin ! Deux figures montantes de la scène urbaine congolaise, BFM Monster et The Mingongo, s'apprêtent à dévoiler leur toute nouvelle chanson une collaboration qui promet de marquer les esprits.</p>
       
